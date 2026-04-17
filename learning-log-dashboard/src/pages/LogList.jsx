@@ -9,6 +9,9 @@ export default function LogList() {
   const [logs,setLogs] =useState([]);
   const [loading,setLoading]=useState(true);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('search') || "";
+
   useEffect(() => {
     document.title = "学習記録一覧 | Learning Log";
     fetchLogs().then((data) => {

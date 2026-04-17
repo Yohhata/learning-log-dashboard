@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import LogList from './pages/LogList';
+import NewLog from './pages/NewLog';
 function App(){
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App(){
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/logs" element={<LogList />} />
+          <Route path="/logs/new" element={<NewLog />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </main>

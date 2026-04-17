@@ -4,8 +4,7 @@ import { fetchLogs } from '../api/mockData';
 
 export default function LogList() {
   
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+
 
   const [logs,setLogs] =useState([]);
   const [loading,setLoading]=useState(true);

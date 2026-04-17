@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchLogs } from '../api/mockData';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export default function LogList() {
   
 
 
-  const [logs,setLogs] =useState([]);
+  const [logs,setLogs] =useLocalStorage("learning-logs",[]);
   const [loading,setLoading]=useState(true);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,10 +15,9 @@ export default function LogList() {
 
   useEffect(() => {
     document.title = "学習記録一覧 | Learning Log";
-    fetchLogs().then((data) => {
-      setLogs(data);
-      setLoading(false);
-    });
+
+    const timer=setTimeout(() => setLoading(false),500);
+    return ()=>clearTimeout(timer);
   }, []);
 
   const filteredLogs = logs.filter(log => 

@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export default function NewLog(){
     const navigate =useNavigate();
+
+    const [logs,setLogs]=useLocalStorage("learning-logs",[]);
 
     const [title,setTitle]=useState("");
     const [category, setCategory] = useState("React");
     const [minutes, setMinutes] = useState(0);
 
     const handleSubmit = (e) => {
-    e.preventDefault(); // ページのリロードを防ぐ
+    e.preventDefault(); 
 
    
     if (!title) {
@@ -18,15 +21,16 @@ export default function NewLog(){
     }
 
     const newLog = {
-      id: Date.now().toString(), // 簡易的なID作成
+      id: Date.now().toString(), 
       title,
       category,
       minutes,
       date: new Date().toISOString().split('T')[0],
-      status: "done"
+      status: "done",
+      favorite:false
     };
 
-    console.log("新しい記録を保存します:", newLog);
+    setLogs([...logs,newLog]);
 
     
     alert("保存しました！");
@@ -47,6 +51,7 @@ export default function NewLog(){
             <option value="React">React</option>
             <option value="CSS">CSS</option>
             <option value="JavaScript">JavaScript</option>
+            <option value="Git">Git</option>
           </select>
         </div>
         <div>

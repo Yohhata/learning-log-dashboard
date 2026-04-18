@@ -35,6 +35,15 @@ export default function LogList() {
     }
   };
 
+  const handleDelete=(id)=>{
+    if(!window.confirm("この記録を消去してもよろしいですか？？"))return;
+
+    const newLog=logs.filter(log=>log.id !== id);
+
+  setLogs(newLog);
+  };
+
+
 
   if (loading) return <div>データを読み込み中...</div>;
 
@@ -65,6 +74,18 @@ export default function LogList() {
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <h3>{log.title}</h3>
                 {log.favorite && <span>⭐</span>}
+                <button 
+          onClick={() => handleDelete(log.id)}
+          style={{ 
+            marginLeft: '10px', 
+            cursor: 'pointer', 
+            background: 'none', 
+            border: 'none', 
+            color: '#ff4d4f' 
+          }}
+        >
+          🗑️ 削除
+        </button>
               </div>
               <p>カテゴリ: {log.category} | ステータス: {log.status}</p>
             </div>

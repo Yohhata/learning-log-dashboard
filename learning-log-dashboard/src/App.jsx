@@ -8,7 +8,8 @@ function App(){
       <header style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
         <nav>
           <Link to="/">ダッシュボード</Link> | 
-          <Link to="/logs">一覧</Link> | 
+          <Link to="/logs">一覧</Link>|
+          <Link to="logs/new">新規作成</Link> 
         </nav>
       </header>
 

@@ -2,26 +2,27 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import LogList from './pages/LogList';
 import NewLog from './pages/NewLog';
+import Layout from './components/Layout';
+
+const globalStyle = {
+  fontFamily: "'Inter', 'Noto Sans JP', sans-serif",
+  margin: 0,
+  padding: 0,
+  boxSizing: 'border-box'
+};
 function App(){
   return (
+    <div style={globalStyle}>
     <BrowserRouter>
-      <header style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
-        <nav>
-          <Link to="/">ダッシュボード</Link> | 
-          <Link to="/logs">一覧</Link>|
-          <Link to="logs/new">新規作成</Link> 
-        </nav>
-      </header>
-
-      <main style={{ padding: '1rem' }}>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/logs" element={<LogList />} />
-          <Route path="/logs/new" element={<NewLog />} />
-          <Route path="*" element={<h1>404 Not Found</h1>} />
+      <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="logs" element={<LogList />} />
+            <Route path="logs/new" element={<NewLog />} />
+          </Route>
         </Routes>
-      </main>
     </BrowserRouter>
+    </div>
   );
 }
 

@@ -38,31 +38,73 @@ export default function NewLog(){
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>新規学習記録の追加</h1>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px', maxWidth: '400px' }}>
-        <div>
-          <label>タイトル: </label><br />
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} style={{ width: '100%' }} />
-        </div>
-        <div>
-          <label>カテゴリ: </label><br />
-          <select value={category} onChange={(e) => setCategory(e.target.value)} style={{ width: '100%' }}>
+    <div style={{ 
+    maxWidth: '500px', 
+    margin: '40px auto', 
+    padding: '30px', 
+    backgroundColor: '#1e1e1e', 
+    borderRadius: '16px', 
+    border: '1px solid #333',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+  }}>
+    <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>🆕 新規記録を追加</h1>
+    
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <div>
+        <label style={{ display: 'block', marginBottom: '8px', color: '#aaa' }}>学習タイトル</label>
+        <input 
+          type="text" 
+          placeholder="例: ReactのHooksを学ぶ"
+          value={title} 
+          onChange={(e) => setTitle(e.target.value)} 
+          style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #444', backgroundColor: '#000', color: '#fff' }} 
+        />
+      </div>
+
+      <div style={{ display: 'flex', gap: '15px' }}>
+        <div style={{ flex: 1 }}>
+          <label style={{ display: 'block', marginBottom: '8px', color: '#aaa' }}>カテゴリ</label>
+          <select 
+            value={category} 
+            onChange={(e) => setCategory(e.target.value)} 
+            style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #444', backgroundColor: '#000', color: '#fff' }}
+          >
             <option value="React">React</option>
             <option value="CSS">CSS</option>
             <option value="JavaScript">JavaScript</option>
             <option value="Git">Git</option>
           </select>
         </div>
-        <div>
-          <label>学習時間 (分): </label><br />
-          <input type="number" value={minutes} onChange={(e) => setMinutes(Number(e.target.value))} style={{ width: '100%' }} />
+
+        <div style={{ flex: 1 }}>
+          <label style={{ display: 'block', marginBottom: '8px', color: '#aaa' }}>学習時間 (分)</label>
+          <input 
+            type="number" 
+            value={minutes} 
+            onChange={(e) => setMinutes(e.target.value)} 
+            style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #444', backgroundColor: '#000', color: '#fff' }} 
+          />
         </div>
-        <button type="submit" style={{ padding: '10px', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px' }}>
-          保存する
-        </button>
-      </form>
-    </div>
+      </div>
+
+      <button 
+        type="submit" 
+        style={{ 
+          marginTop: '10px',
+          padding: '15px', 
+          borderRadius: '8px', 
+          border: 'none', 
+          backgroundColor: '#0088FE', 
+          color: 'white', 
+          fontWeight: 'bold', 
+          cursor: 'pointer',
+          fontSize: '1rem'
+        }}
+      >
+        記録を保存する
+      </button>
+    </form>
+  </div>
   );
 
 

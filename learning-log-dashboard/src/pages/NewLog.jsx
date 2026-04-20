@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function NewLog(){
+    useDocumentTitle("新規記録追加");
     const navigate =useNavigate();
 
     const [logs,setLogs]=useLocalStorage("learning-logs",[]);

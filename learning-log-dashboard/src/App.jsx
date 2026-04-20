@@ -19,6 +19,9 @@ function App(){
             <Route index element={<Dashboard />} />
             <Route path="logs" element={<LogList />} />
             <Route path="logs/new" element={<NewLog />} />
+            <Route path="logs/:id" element={<div>詳細画面（開発中）</div>} />
+            <Route path="logs/:id/edit" element={<div>編集画面（開発中）</div>} />
+            <Route path="*" element={<div>404 Not Found - ページが見つかりません</div>} />
           </Route>
         </Routes>
     </BrowserRouter>

@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchLogs } from '../api/mockData';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function LogList() {
-  
+  useDocumentTitle("学習記録一覧");
 
 
   const [logs,setLogs] =useLocalStorage("learning-logs",[]);
@@ -14,8 +15,6 @@ export default function LogList() {
   const searchQuery = searchParams.get('search') || "";
 
   useEffect(() => {
-    document.title = "学習記録一覧 | Learning Log";
-
     const timer=setTimeout(() => setLoading(false),500);
     return ()=>clearTimeout(timer);
   }, []);
@@ -27,7 +26,7 @@ export default function LogList() {
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
-    // 入力した瞬間にURLの ?search=... を更新する
+    
     if (value) {
       setSearchParams({ search: value });
     } else {

@@ -1,7 +1,9 @@
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { PieChart,Pie,Cell,ResponsiveContainer,Legend,Tooltip } from "recharts";
 
 export default function Dashboard(){
+  useDocumentTitle("統計ダッシュボード");
 
   const [logs]=useLocalStorage("learning-logs",[]);
 
@@ -15,7 +17,7 @@ export default function Dashboard(){
   const chartData = Object.keys(categoryDataMap)
     .map(key => ({
       name: key,
-      value: Number(categoryDataMap[key]) // 確実に数値に変換
+      value: Number(categoryDataMap[key]) 
     }))
     .filter(item => item.value > 0);
 
